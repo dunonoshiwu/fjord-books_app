@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to @book, notice: t('.success')
+      redirect_to @book, notice: t('helpers.notice.success.create', model: @book.title)
     else
       render :new
     end
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: t('.success')
+      redirect_to @book, notice: t('helpers.notice.success.update', model: @book.title)
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   def destroy
     @book.destroy
-    redirect_to books_url, notice: t('.success')
+    redirect_to books_url, notice: t('helpers.notice.success.destroy', model: @book.title)
   end
 
   private
