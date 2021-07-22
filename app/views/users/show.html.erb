@@ -37,3 +37,20 @@
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
 <%= link_to t('views.common.back'), users_path %>
+
+<div class="stats">
+  <a href="<%= followings_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followings.count %>
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">|
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    フォロワー
+  </a>
+</div>
+
+<%= render 'follow_form' %>
